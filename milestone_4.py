@@ -8,19 +8,19 @@ class Hangman:
         self.word_guessed = ['_' for element in self.word]
         self.num_letters = len(set(self.word))
         self.list_of_guesses = []
-        #print(self.word, self.word_guessed,self.num_letters,self.list_of_guesses)
+        #testing : print(self.word, self.word_guessed,self.num_letters,self.list_of_guesses)
 
     #check guess
-    def check_guess(self,letter):
+    def __check_guess(self,letter):
         letter = letter.lower()
         if letter in self.word:
             print(f'Good guess! {letter} is in the word')
             for element in self.word:
                 if element == letter:
                     self.word_guessed[self.word.find(element)] = element
-                    #print(self.word_guessed)
+                    print(self.word_guessed)
             self.num_letters -= 1
-            #print(self.num_letters)
+            print(f'number of letters to guess: {self.num_letters}')
         else:
             self.num_lives -= 1
             print(f'Sorry, {letter} is not in the word.')
@@ -38,7 +38,7 @@ class Hangman:
             else:
                 self.check_guess(guess)
                 self.list_of_guesses.append(guess)
-                #print(self.list_of_guesses)
+                print(f'list of guesses: {self.list_of_guesses}')
                 
 
 letsplay = Hangman(['apple','banana','mango','pear','pineapple'],5)
